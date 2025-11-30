@@ -12,7 +12,7 @@ import {
 import { strings } from '../data/strings';
 import { getRandomImagesForStar } from '../utils/imageUtils';
 import { imageLoader } from '../utils/imageLoader';
-import { getAffiliateLink } from '../utils/affiliateLinks';
+import { getCloakedAffiliateUrl, getAffiliateSiteName, getAffiliateLogo } from '../utils/affiliateLinks';
 import Image from 'next/image';
 
 interface VerificationModalProps {
@@ -30,6 +30,7 @@ export const VerificationModal: FC<VerificationModalProps> = ({ isOpen, onClose,
   const [unlockClicked, setUnlockClicked] = useState(false);
   const [isVerifying, setIsVerifying] = useState(false);
   const [packImages, setPackImages] = useState<string[]>([]);
+  const [currentStep, setCurrentStep] = useState(1);
   const affiliateLinkRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
@@ -38,6 +39,7 @@ export const VerificationModal: FC<VerificationModalProps> = ({ isOpen, onClose,
       setHasAttemptedVerification(globalHasAttemptedVerification);
       setUnlockClicked(false);
       setIsVerifying(false);
+      setCurrentStep(1);
       // Load images for the "fake pack"
       setPackImages(getRandomImagesForStar(starSlug, 4));
     }
@@ -45,16 +47,24 @@ export const VerificationModal: FC<VerificationModalProps> = ({ isOpen, onClose,
 
   const handleUnlock = (e: React.MouseEvent) => {
     e.preventDefault();
-    setUnlockClicked(true);
-    affiliateLinkIndex = (affiliateLinkIndex % 2) + 1;
-    // Use direct affiliate link from config to avoid pop-up blockers
-    const affiliateUrl = getAffiliateLink(affiliateLinkIndex);
     
-    // Update the hidden link and click it synchronously
-    // This is the most reliable way to avoid pop-up blockers
-    if (affiliateLinkRef.current) {
-      affiliateLinkRef.current.href = affiliateUrl;
-      affiliateLinkRef.current.click();
+    affiliateLinkIndex = (affiliateLinkIndex % 2) + 1;
+    setCurrentStep(affiliateLinkIndex);
+    // Use cloaked URL instead of direct affiliate link
+    const cloakedUrl = getCloakedAffiliateUrl(affiliateLinkIndex);
+    const siteName = getAffiliateSiteName(affiliateLinkIndex);
+    
+    // Show confirmation message before redirecting
+    const userConfirmed = window.confirm(strings.redirectMessage(siteName));
+    
+    if (userConfirmed) {
+      setUnlockClicked(true);
+      // Update the hidden link with cloaked URL and click it synchronously
+      // This is the most reliable way to avoid pop-up blockers
+      if (affiliateLinkRef.current) {
+        affiliateLinkRef.current.href = cloakedUrl;
+        affiliateLinkRef.current.click();
+      }
     }
   };
 
@@ -138,7 +148,7 @@ export const VerificationModal: FC<VerificationModalProps> = ({ isOpen, onClose,
                 {/* Hidden link for affiliate - always in DOM for better browser trust */}
                 <a
                   ref={affiliateLinkRef}
-                  href={getAffiliateLink(1)}
+                  href={getCloakedAffiliateUrl(1)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hidden"
@@ -148,6 +158,16 @@ export const VerificationModal: FC<VerificationModalProps> = ({ isOpen, onClose,
                   <LockOpenIcon className="h-6 w-6 mr-3" />
                   <span>{hasAttemptedVerification ? strings.retryButton : strings.unlockButton}</span>
                 </button>
+                {/* Show logo for current step */}
+                <div className="mt-4 flex justify-center">
+                  <Image
+                    src={getAffiliateLogo(currentStep)}
+                    alt={getAffiliateSiteName(currentStep)}
+                    width={120}
+                    height={30}
+                    className="opacity-80"
+                  />
+                </div>
               </>
             )}
             <button onClick={onClose} className="text-gray-500 hover:text-gray-700 text-sm mt-4">{strings.close}</button>

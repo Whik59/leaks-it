@@ -127,4 +127,9 @@ export const strings = {
   affiliateBannerButton: "Inscrivez-vous gratuitement maintenant",
   affiliateBannerTrust: "🔒 100% discret et sécurisé",
   affiliateBannerOnline: (count: number) => `+ ${count} en ligne`,
+
+  // Redirect messages
+  redirectMessage: (siteName: string) => `Vous allez être redirigé vers ${siteName}. L'inscription est gratuite. Après votre inscription, vous obtiendrez l'accès aux leaks.`,
+  redirectConfirm: "Continuer",
+  redirectCancel: "Annuler",
 };

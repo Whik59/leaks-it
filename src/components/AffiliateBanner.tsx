@@ -1,16 +1,17 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef } from 'react';
 import Image from 'next/image';
 import { imageLoader } from '../utils/imageLoader';
 import imageList from '../data/imageList.json';
 import { strings } from '../data/strings';
-import { getDefaultAffiliateLink } from '../utils/affiliateLinks';
+import { getCloakedDefaultAffiliateUrl, getDefaultAffiliateSiteName, getDefaultAffiliateLogo } from '../utils/affiliateLinks';
 
 const R2_PUBLIC_URL = process.env.NEXT_PUBLIC_R2_PUBLIC_URL;
 
 const AffiliateBanner: React.FC = () => {
   const [isHovered, setIsHovered] = useState(false);
+  const affiliateLinkRef = useRef<HTMLAnchorElement>(null);
 
   const onlineUsers = useMemo(() => {
     // Shuffle the array and take the first 7 to show random users each time.
@@ -36,18 +37,39 @@ const AffiliateBanner: React.FC = () => {
     boxShadow: isHovered ? '0 6px 25px rgba(0, 0, 0, 0.35)' : '0 4px 20px rgba(0, 0, 0, 0.25)',
   };
 
-  // Use direct affiliate link from config to avoid pop-up blockers
-  const affiliateUrl = getDefaultAffiliateLink();
+  // Use cloaked affiliate link from config to avoid showing scammy URLs
+  const cloakedUrl = getCloakedDefaultAffiliateUrl();
+  const siteName = getDefaultAffiliateSiteName();
+  const logo = getDefaultAffiliateLogo();
+
+  const handleBannerClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const userConfirmed = window.confirm(strings.redirectMessage(siteName));
+    if (userConfirmed && affiliateLinkRef.current) {
+      affiliateLinkRef.current.click();
+    }
+  };
 
   return (
-    <a 
-      href={affiliateUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
+    <>
+      {/* Hidden link for affiliate - always in DOM for better browser trust */}
+      <a
+        ref={affiliateLinkRef}
+        href={cloakedUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hidden"
+        aria-hidden="true"
+      />
+      <a 
+        href={cloakedUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={handleBannerClick}
+        style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
       <div style={{
         background: 'linear-gradient(135deg, #ff4081 0%, #8e44ad 100%)',
         width: '100%',
@@ -136,6 +158,15 @@ const AffiliateBanner: React.FC = () => {
             <div style={buttonStyle}>
               {strings.affiliateBannerButton}
             </div>
+            <div style={{ marginTop: '12px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              <Image
+                src={logo}
+                alt={siteName}
+                width={120}
+                height={30}
+                style={{ opacity: 0.9 }}
+              />
+            </div>
              <p style={{ fontSize: '0.8rem', marginTop: '10px', opacity: '0.85' }}>
               {strings.affiliateBannerTrust}
             </p>
@@ -143,6 +174,7 @@ const AffiliateBanner: React.FC = () => {
         </div>
       </div>
     </a>
+    </>
   );
 };
 

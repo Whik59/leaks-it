@@ -1,4 +1,5 @@
 # Cloudflare Pages redirects and rewrites
 # Note: Next.js static export handles routing automatically
-# The API redirect is handled by Cloudflare Pages Function in functions/api/redirect.ts
+# Cloaked affiliate redirects are handled by Cloudflare Pages Functions
+# /redirect/step1 and /redirect/step2 -> functions/redirect/[step].ts
 

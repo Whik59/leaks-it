@@ -1,10 +1,7 @@
 // Cloudflare Pages Function to handle cloaked redirects
-// This replaces the Next.js API route for static export
+// This handles URLs like /redirect/step1 and /redirect/step2
 // 
 // IMPORTANT: Keep these links in sync with src/data/siteConfig.json
-// This function handles cloaked URLs like /redirect/step1 and /redirect/step2
-//
-// To update affiliate links, edit src/data/siteConfig.json
 
 export async function onRequest({ request }: { request: Request }): Promise<Response> {
   const url = new URL(request.url);

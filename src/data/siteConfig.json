@@ -3,9 +3,16 @@
   "siteName": "OnlyFanLeaks",
   "defaultLanguage": "fr",
   "affiliateLinks": {
-    "step1": "https://t.crjmpy.com/345641/7903?bo=2753,2754,2755,2756&aff_sub5=SF_006OG000004lmDN",
-    "step2": "https://t.crjmpy.com/345641/7852?bo=2753,2754,2755,2756&aff_sub5=SF_006OG000004lmDN",
-    "default": "https://t.crjmpy.com/345641/7852?bo=2753,2754,2755,2756&aff_sub5=SF_006OG000004lmDN"
+    "step1": {
+      "url": "https://t.crjmpy.com/345641/7903?bo=2753,2754,2755,2756&aff_sub5=SF_006OG000004lmDN",
+      "siteName": "Voisins Solitaires",
+      "logo": "/step1.svg"
+    },
+    "step2": {
+      "url": "https://t.crjmpy.com/345641/7852?bo=2753,2754,2755,2756&aff_sub5=SF_006OG000004lmDN",
+      "siteName": "Be Coquin",
+      "logo": "/step2.svg"
+    }
   }
 }
 
