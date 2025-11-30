@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import "../styles/globals.css";
 import { strings } from '../data/strings';
 import { Geist, Geist_Mono } from "next/font/google";
@@ -67,20 +66,6 @@ export default function RootLayout({
       >
         <AffiliateBanner />
         {children}
-        <Script id="popcash-script" strategy="afterInteractive">
-          {`
-            var uid = '488882';
-            var wid = '743102';
-            var pop_tag = document.createElement('script');
-            pop_tag.src = '//cdn.popcash.net/show.js';
-            document.body.appendChild(pop_tag);
-            pop_tag.onerror = function() {
-              pop_tag = document.createElement('script');
-              pop_tag.src = '//cdn2.popcash.net/show.js';
-              document.body.appendChild(pop_tag);
-            };
-          `}
-        </Script>
       </body>
     </html>
   );
