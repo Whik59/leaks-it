@@ -10,6 +10,7 @@ import keywords from '../../data/keywords.json';
 import { pickRandomKeywords } from '../../utils/keywordUtils';
 import { SEOLinkingManager } from '../../utils/seoLinking';
 import { StickyCTA } from '../../components/StickyCTA';
+import { TelegramButton } from '../../components/TelegramButton';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -179,6 +180,11 @@ export default async function StarPage({ params }: PageProps) {
       </header>
 
       <div className="max-w-7xl mx-auto px-4 py-12">
+        {/* Telegram Button - Before Gallery */}
+        <div className="max-w-md mx-auto mb-8">
+          <TelegramButton variant="default" />
+        </div>
+
         {/* Gallery Section */}
         <section className="mb-16">
           <div className="text-center mb-12">

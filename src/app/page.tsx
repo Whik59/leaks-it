@@ -6,6 +6,7 @@ import SearchBar from '../components/SearchBar';
 import AlphabetFilter from '../components/AlphabetFilter';
 import { strings } from '../data/strings';
 import { SEOLinkingManager } from '../utils/seoLinking';
+import { TelegramButton } from '../components/TelegramButton';
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -105,9 +106,13 @@ export default function Home() {
 
         {/* Results count */}
         <div className="text-center mb-8">
-          <p className="text-gray-600 text-lg">
+          <p className="text-gray-600 text-lg mb-6">
             {strings.starsFound(filteredStars.length)}
           </p>
+          {/* Telegram Button */}
+          <div className="max-w-md mx-auto mb-6">
+            <TelegramButton variant="default" />
+          </div>
         </div>
 
         {/* Stars grid with SEO-friendly structure */}
