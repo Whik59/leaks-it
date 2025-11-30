@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { imageLoader } from '../utils/imageLoader';
 import imageList from '../data/imageList.json';
 import { strings } from '../data/strings';
+import { getDefaultAffiliateLink } from '../utils/affiliateLinks';
 
 const R2_PUBLIC_URL = process.env.NEXT_PUBLIC_R2_PUBLIC_URL;
 
@@ -35,9 +36,12 @@ const AffiliateBanner: React.FC = () => {
     boxShadow: isHovered ? '0 6px 25px rgba(0, 0, 0, 0.35)' : '0 4px 20px rgba(0, 0, 0, 0.25)',
   };
 
+  // Use direct affiliate link from config to avoid pop-up blockers
+  const affiliateUrl = getDefaultAffiliateLink();
+
   return (
     <a 
-      href="/api/redirect"
+      href={affiliateUrl}
       target="_blank"
       rel="noopener noreferrer"
       style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}

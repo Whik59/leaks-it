@@ -12,6 +12,7 @@ import {
 import { strings } from '../data/strings';
 import { getRandomImagesForStar } from '../utils/imageUtils';
 import { imageLoader } from '../utils/imageLoader';
+import { getAffiliateLink } from '../utils/affiliateLinks';
 import Image from 'next/image';
 
 interface VerificationModalProps {
@@ -43,9 +44,18 @@ export const VerificationModal: FC<VerificationModalProps> = ({ isOpen, onClose,
 
   const handleUnlock = () => {
     setUnlockClicked(true);
-    affiliateLinkIndex = (affiliateLinkIndex % 3) + 1;
-    const affiliateUrl = `/api/redirect?step=${affiliateLinkIndex}&star=${starName}`;
-    window.open(affiliateUrl, '_blank', 'noopener,noreferrer');
+    affiliateLinkIndex = (affiliateLinkIndex % 2) + 1;
+    // Use direct affiliate link from config to avoid pop-up blockers
+    const affiliateUrl = getAffiliateLink(affiliateLinkIndex);
+    // Create a temporary link and click it - this avoids pop-up blockers
+    // Browsers allow this because it's a direct user action
+    const link = document.createElement('a');
+    link.href = affiliateUrl;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   const handleVerificationCheck = () => {
