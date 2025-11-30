@@ -61,3 +61,8 @@ export function getCloakedDefaultAffiliateUrl(): string {
   return '/redirect/step2';
 }
 
+// Telegram utility
+export function getTelegramLink(): string {
+  return siteConfig.telegramLink || '';
+}
+

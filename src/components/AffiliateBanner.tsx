@@ -5,12 +5,14 @@ import Image from 'next/image';
 import { imageLoader } from '../utils/imageLoader';
 import imageList from '../data/imageList.json';
 import { strings } from '../data/strings';
-import { getCloakedDefaultAffiliateUrl, getDefaultAffiliateSiteName, getDefaultAffiliateLogo } from '../utils/affiliateLinks';
+import { getCloakedDefaultAffiliateUrl } from '../utils/affiliateLinks';
+import { RedirectConfirmationModal } from './RedirectConfirmationModal';
 
 const R2_PUBLIC_URL = process.env.NEXT_PUBLIC_R2_PUBLIC_URL;
 
 const AffiliateBanner: React.FC = () => {
   const [isHovered, setIsHovered] = useState(false);
+  const [showRedirectConfirm, setShowRedirectConfirm] = useState(false);
   const affiliateLinkRef = useRef<HTMLAnchorElement>(null);
 
   const onlineUsers = useMemo(() => {
@@ -39,13 +41,15 @@ const AffiliateBanner: React.FC = () => {
 
   // Use cloaked affiliate link from config to avoid showing scammy URLs
   const cloakedUrl = getCloakedDefaultAffiliateUrl();
-  const siteName = getDefaultAffiliateSiteName();
-  const logo = getDefaultAffiliateLogo();
 
   const handleBannerClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    const userConfirmed = window.confirm(strings.redirectMessage(siteName));
-    if (userConfirmed && affiliateLinkRef.current) {
+    setShowRedirectConfirm(true);
+  };
+
+  const handleRedirectConfirm = () => {
+    setShowRedirectConfirm(false);
+    if (affiliateLinkRef.current) {
       affiliateLinkRef.current.click();
     }
   };
@@ -158,15 +162,6 @@ const AffiliateBanner: React.FC = () => {
             <div style={buttonStyle}>
               {strings.affiliateBannerButton}
             </div>
-            <div style={{ marginTop: '12px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <Image
-                src={logo}
-                alt={siteName}
-                width={120}
-                height={30}
-                style={{ opacity: 0.9 }}
-              />
-            </div>
              <p style={{ fontSize: '0.8rem', marginTop: '10px', opacity: '0.85' }}>
               {strings.affiliateBannerTrust}
             </p>
@@ -174,6 +169,14 @@ const AffiliateBanner: React.FC = () => {
         </div>
       </div>
     </a>
+
+    {/* Custom redirect confirmation modal */}
+    <RedirectConfirmationModal
+      isOpen={showRedirectConfirm}
+      onClose={() => setShowRedirectConfirm(false)}
+      onConfirm={handleRedirectConfirm}
+      step={2}
+    />
     </>
   );
 };

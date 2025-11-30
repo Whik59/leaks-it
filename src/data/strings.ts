@@ -132,4 +132,19 @@ export const strings = {
   redirectMessage: (siteName: string) => `Vous allez être redirigé vers ${siteName}. L'inscription est gratuite. Après votre inscription, vous obtiendrez l'accès aux leaks.`,
   redirectConfirm: "Continuer",
   redirectCancel: "Annuler",
+
+  // Custom redirect confirmation popup
+  redirectPopupTitle: (siteName: string) => `Redirection vers ${siteName}`,
+  redirectPopupDescription: (siteName: string) => `Vous allez être redirigé vers ${siteName} pour compléter votre inscription gratuite.`,
+  redirectPopupBenefits: "✓ Inscription 100% gratuite\n✓ Accès immédiat aux leaks\n✓ Aucune carte bancaire requise",
+  redirectPopupOnlineUsers: (count: number) => `🔥 ${count.toLocaleString()} personnes en ligne maintenant`,
+  redirectPopupTrust: "🔒 Site sécurisé et vérifié",
+  redirectPopupContinue: "Continuer vers l'inscription",
+  redirectPopupCancel: "Annuler",
+
+  // Telegram
+  telegramJoinButton: "Rejoindre notre Telegram",
+  telegramTitle: "Leaks exclusifs sur Telegram",
+  telegramDescription: "Rejoignez notre canal Telegram pour recevoir les leaks exclusifs en avant-première !",
+  telegramBenefits: "✓ Leaks exclusifs en avant-première\n✓ Contenu privé et confidentiel\n✓ Mises à jour quotidiennes",
 };
