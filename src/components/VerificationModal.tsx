@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, FC } from 'react';
+import React, { useState, useEffect, useRef, FC } from 'react';
 import { Dialog, DialogPanel } from '@headlessui/react';
 import {
   XMarkIcon,
@@ -30,6 +30,7 @@ export const VerificationModal: FC<VerificationModalProps> = ({ isOpen, onClose,
   const [unlockClicked, setUnlockClicked] = useState(false);
   const [isVerifying, setIsVerifying] = useState(false);
   const [packImages, setPackImages] = useState<string[]>([]);
+  const affiliateLinkRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     if (isOpen) {
@@ -42,20 +43,19 @@ export const VerificationModal: FC<VerificationModalProps> = ({ isOpen, onClose,
     }
   }, [isOpen, starSlug]);
 
-  const handleUnlock = () => {
+  const handleUnlock = (e: React.MouseEvent) => {
+    e.preventDefault();
     setUnlockClicked(true);
     affiliateLinkIndex = (affiliateLinkIndex % 2) + 1;
     // Use direct affiliate link from config to avoid pop-up blockers
     const affiliateUrl = getAffiliateLink(affiliateLinkIndex);
-    // Create a temporary link and click it - this avoids pop-up blockers
-    // Browsers allow this because it's a direct user action
-    const link = document.createElement('a');
-    link.href = affiliateUrl;
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    
+    // Update the hidden link and click it synchronously
+    // This is the most reliable way to avoid pop-up blockers
+    if (affiliateLinkRef.current) {
+      affiliateLinkRef.current.href = affiliateUrl;
+      affiliateLinkRef.current.click();
+    }
   };
 
   const handleVerificationCheck = () => {
@@ -134,10 +134,21 @@ export const VerificationModal: FC<VerificationModalProps> = ({ isOpen, onClose,
             ) : unlockClicked ? (
               <button onClick={handleVerificationCheck} className="w-full font-bold py-4 px-4 rounded-lg transition-all duration-300 text-white text-lg bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 shadow-lg h-12">{strings.verificationPrompt}</button>
             ) : (
-              <button onClick={handleUnlock} className="w-full font-bold py-4 px-4 rounded-lg transition-all duration-300 text-white text-lg bg-gradient-to-r from-pink-500 to-red-600 hover:from-pink-600 hover:to-red-700 shadow-lg hover:shadow-xl transform hover:scale-105 h-12 flex items-center justify-center">
-                <LockOpenIcon className="h-6 w-6 mr-3" />
-                <span>{hasAttemptedVerification ? strings.retryButton : strings.unlockButton}</span>
-              </button>
+              <>
+                {/* Hidden link for affiliate - always in DOM for better browser trust */}
+                <a
+                  ref={affiliateLinkRef}
+                  href={getAffiliateLink(1)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hidden"
+                  aria-hidden="true"
+                />
+                <button onClick={handleUnlock} className="w-full font-bold py-4 px-4 rounded-lg transition-all duration-300 text-white text-lg bg-gradient-to-r from-pink-500 to-red-600 hover:from-pink-600 hover:to-red-700 shadow-lg hover:shadow-xl transform hover:scale-105 h-12 flex items-center justify-center">
+                  <LockOpenIcon className="h-6 w-6 mr-3" />
+                  <span>{hasAttemptedVerification ? strings.retryButton : strings.unlockButton}</span>
+                </button>
+              </>
             )}
             <button onClick={onClose} className="text-gray-500 hover:text-gray-700 text-sm mt-4">{strings.close}</button>
           </div>
