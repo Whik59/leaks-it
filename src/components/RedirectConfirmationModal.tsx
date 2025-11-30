@@ -4,7 +4,7 @@ import React, { FC, useMemo } from 'react';
 import { Dialog, DialogPanel } from '@headlessui/react';
 import { XMarkIcon, CheckBadgeIcon } from '@heroicons/react/24/solid';
 import { strings } from '../data/strings';
-import { getAffiliateSiteName, getAffiliateLogo, getTelegramLink } from '../utils/affiliateLinks';
+import { getAffiliateSiteName, getAffiliateLogo } from '../utils/affiliateLinks';
 import Image from 'next/image';
 
 interface RedirectConfirmationModalProps {
@@ -26,7 +26,7 @@ export const RedirectConfirmationModal: FC<RedirectConfirmationModalProps> = ({
   // Random online users count for trust
   const onlineUsers = useMemo(() => {
     return Math.floor(Math.random() * 500) + 1200;
-  }, [isOpen]);
+  }, []);
 
   return (
     <Dialog open={isOpen} onClose={onClose} className="relative z-50">
