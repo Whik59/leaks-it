@@ -9,13 +9,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const domain = siteConfig.domain;
   const currentDate = new Date().toISOString().split('T')[0];
   
-  // Homepage entry
+  // Homepage and category pages
   const sitemapEntries: MetadataRoute.Sitemap = [
     {
       url: `${domain}/`,
       lastModified: currentDate,
       changeFrequency: 'daily',
       priority: 1.0,
+    },
+    {
+      url: `${domain}/telegram-leaks`,
+      lastModified: currentDate,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: `${domain}/onlyfans-leaks`,
+      lastModified: currentDate,
+      changeFrequency: 'daily',
+      priority: 0.9,
     },
   ];
 

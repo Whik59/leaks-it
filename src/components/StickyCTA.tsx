@@ -7,12 +7,16 @@ import { strings } from '../data/strings';
 import { VerificationModal } from './VerificationModal';
 
 interface StickyCTAProps {
-  starName: string;
-  starSlug: string;
+  starName?: string;
+  starSlug?: string;
 }
 
 export const StickyCTA: FC<StickyCTAProps> = ({ starName, starSlug }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  // Default values for pages without a specific star
+  const displayStarName = starName || 'exclusifs';
+  const displayStarSlug = starSlug || 'home';
 
   return (
     <>
@@ -36,8 +40,8 @@ export const StickyCTA: FC<StickyCTAProps> = ({ starName, starSlug }) => {
       <VerificationModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        starName={starName}
-        starSlug={starSlug}
+        starName={displayStarName}
+        starSlug={displayStarSlug}
       />
     </>
   );

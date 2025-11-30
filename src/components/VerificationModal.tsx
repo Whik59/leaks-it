@@ -19,7 +19,7 @@ import Image from 'next/image';
 interface VerificationModalProps {
   isOpen: boolean;
   onClose: () => void;
-  starName: string;
+  starName?: string;
   starSlug: string;
 }
 
@@ -90,7 +90,11 @@ export const VerificationModal: FC<VerificationModalProps> = ({ isOpen, onClose,
           <div className="p-6">
             <div className="flex justify-between items-start">
               <h2 className="text-xl sm:text-2xl font-extrabold text-gray-900 leading-tight pr-4">
-                {hasAttemptedVerification ? strings.verificationErrorTitle : strings.modalTitle(starName)}
+                {hasAttemptedVerification 
+                  ? strings.verificationErrorTitle 
+                  : starName 
+                    ? strings.modalTitle(starName) 
+                    : strings.modalTitleGeneric}
               </h2>
               <button onClick={onClose} className="text-gray-400 hover:text-gray-600 transition-colors" aria-label={strings.close}>
                 <XMarkIcon className="h-7 w-7" />

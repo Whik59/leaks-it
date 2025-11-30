@@ -6,6 +6,7 @@ import SearchBar from '../components/SearchBar';
 import AlphabetFilter from '../components/AlphabetFilter';
 import { strings } from '../data/strings';
 import { SEOLinkingManager } from '../utils/seoLinking';
+import { StickyCTA } from '../components/StickyCTA';
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -103,6 +104,30 @@ export default function Home() {
           availableLetters={availableLetters}
             />
 
+        {/* Category Pages - SEO Internal Linking */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <Link
+            href="/telegram-leaks"
+            className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+          >
+            <h2 className="text-2xl font-bold mb-2">📱 Telegram Leaks</h2>
+            <p className="text-blue-100">Découvrez tous les leaks exclusifs via Telegram</p>
+            <div className="mt-4 text-sm font-medium">
+              Voir toutes les stars →
+            </div>
+          </Link>
+          <Link
+            href="/onlyfans-leaks"
+            className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+          >
+            <h2 className="text-2xl font-bold mb-2">🔥 OnlyFans Leaks</h2>
+            <p className="text-pink-100">Explorez tous les leaks OnlyFans disponibles</p>
+            <div className="mt-4 text-sm font-medium">
+              Voir toutes les stars →
+            </div>
+          </Link>
+        </div>
+
         {/* Results count */}
         <div className="text-center mb-8">
           <p className="text-gray-600 text-lg">
@@ -189,6 +214,16 @@ export default function Home() {
                     {strings.home}
                   </Link>
                 </li>
+                <li>
+                  <Link href="/telegram-leaks" className="text-pink-600 hover:text-pink-800 transition-colors duration-300 hover:underline">
+                    Telegram Leaks
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/onlyfans-leaks" className="text-pink-600 hover:text-pink-800 transition-colors duration-300 hover:underline">
+                    OnlyFans Leaks
+                  </Link>
+                </li>
                 {trendingStarsRotation.map((star) => (
                   <li key={star.slug}>
                     <Link
@@ -225,6 +260,9 @@ export default function Home() {
           </div>
       </footer>
     </div>
+
+    {/* Sticky CTA */}
+    <StickyCTA />
     </main>
   );
 }

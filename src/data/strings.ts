@@ -64,6 +64,7 @@ export const strings = {
 
   // Modal
   modalTitle: (name: string) => `🤫 Débloquer les vidéos de ${name}`,
+  modalTitleGeneric: "🤫 Débloquer les vidéos exclusives",
   modalDescription: "Pour regarder toutes les vidéos exclusives, inscrivez-vous GRATUITEMENT sur le site de notre partenaire. C'est rapide, sécurisé et l'accès est immédiat.",
   unlockButton: "Débloquer les vidéos",
   retryButton: "Réessayer la vérification",
@@ -150,4 +151,90 @@ export const strings = {
   telegramTitle: "Leaks exclusifs sur Telegram",
   telegramDescription: "Rejoignez notre canal Telegram pour recevoir les leaks exclusifs en avant-première !",
   telegramBenefits: "✓ Leaks exclusifs en avant-première\n✓ Contenu privé et confidentiel\n✓ Mises à jour quotidiennes",
+
+  // Category pages
+  telegramLeaksTitle: "Telegram Leaks - Leaks exclusifs via Telegram",
+  telegramLeaksDescription: "Découvrez tous les leaks Telegram exclusifs de vos stars préférées. Contenu premium accessible via Telegram, mis à jour régulièrement.",
+  telegramLeaksHeading: "Leaks Telegram - Toutes les stars",
+  telegramLeaksSubheading: "Accédez aux leaks exclusifs via notre canal Telegram",
+  onlyfansLeaksTitle: "OnlyFans Leaks - Tous les leaks OnlyFans",
+  onlyfansLeaksDescription: "Explorez tous les leaks OnlyFans de vos stars préférées. Contenu premium gratuit, photos et vidéos exclusives, mis à jour quotidiennement.",
+  onlyfansLeaksHeading: "OnlyFans Leaks - Toutes les stars",
+  onlyfansLeaksSubheading: "Découvrez tous les leaks OnlyFans disponibles",
+  viewTelegramLeaks: (name: string) => `Voir les leaks Telegram de ${name}`,
+  viewOnlyFansLeaks: (name: string) => `Voir les leaks OnlyFans de ${name}`,
+
+  // Telegram Leaks FAQ
+  telegramLeaksFaqTitle: "Questions fréquentes sur les leaks Telegram",
+  telegramLeaksFaq: [
+    {
+      question: "Qu'est-ce que les leaks Telegram ?",
+      answer: "Les leaks Telegram sont du contenu exclusif partagé via la plateforme Telegram. Il s'agit de photos, vidéos et autres contenus premium de vos stars préférées, accessibles gratuitement via notre canal Telegram. Ces leaks sont mis à jour régulièrement pour vous offrir toujours le meilleur contenu."
+    },
+    {
+      question: "Comment accéder aux leaks Telegram ?",
+      answer: "Pour accéder aux leaks Telegram, il suffit de rejoindre notre canal Telegram via le bouton disponible sur chaque page. Une fois inscrit, vous recevrez automatiquement tous les leaks exclusifs en avant-première. L'inscription est totalement gratuite et ne nécessite aucune carte bancaire."
+    },
+    {
+      question: "Les leaks Telegram sont-ils gratuits ?",
+      answer: "Oui, tous les leaks Telegram sont 100% gratuits. Il n'y a aucun coût caché, aucune carte bancaire requise, et aucune demande de paiement. Notre objectif est de vous donner accès gratuitement à tout le contenu premium de vos stars préférées."
+    },
+    {
+      question: "À quelle fréquence les leaks Telegram sont-ils mis à jour ?",
+      answer: "Les leaks Telegram sont mis à jour quotidiennement avec du nouveau contenu exclusif. Notre équipe travaille en continu pour vous fournir les derniers leaks dès qu'ils sont disponibles, afin que vous ne manquiez jamais les nouvelles publications de vos stars préférées."
+    },
+    {
+      question: "Qui peut accéder aux leaks Telegram ?",
+      answer: "Tout le monde peut accéder aux leaks Telegram gratuitement. Il suffit d'avoir un compte Telegram (application gratuite disponible sur tous les appareils) et de rejoindre notre canal. Aucune restriction d'âge ou autre condition n'est requise pour accéder au contenu."
+    },
+    {
+      question: "Les leaks Telegram sont-ils légaux ?",
+      answer: "Les leaks Telegram partagés via notre canal sont du contenu public ou partagé par consentement. Nous respectons les droits d'auteur et ne partageons que du contenu légalement accessible. Tous les contenus sont vérifiés avant publication pour garantir leur conformité."
+    },
+    {
+      question: "Puis-je télécharger les leaks Telegram ?",
+      answer: "Oui, vous pouvez télécharger et sauvegarder tous les leaks Telegram directement depuis notre canal. Le contenu est accessible en haute qualité et peut être téléchargé sur votre appareil pour une consultation hors ligne."
+    },
+    {
+      question: "Comment trouver des leaks Telegram d'une star spécifique ?",
+      answer: "Vous pouvez rechercher les leaks Telegram d'une star spécifique en utilisant notre barre de recherche sur la page d'accueil, ou en parcourant notre collection complète de stars. Chaque star a sa propre page dédiée avec tous ses leaks Telegram organisés."
+    }
+  ],
+
+  // OnlyFans Leaks FAQ
+  onlyfansLeaksFaqTitle: "Questions fréquentes sur les leaks OnlyFans",
+  onlyfansLeaksFaq: [
+    {
+      question: "Qu'est-ce que les leaks OnlyFans ?",
+      answer: "Les leaks OnlyFans sont du contenu premium originellement publié sur la plateforme OnlyFans, qui est rendu accessible gratuitement. Il s'agit de photos, vidéos et autres contenus exclusifs de créateurs de contenu, maintenant disponibles sans abonnement payant."
+    },
+    {
+      question: "Les leaks OnlyFans sont-ils vraiment gratuits ?",
+      answer: "Absolument ! Tous les leaks OnlyFans sur notre site sont 100% gratuits. Il n'y a aucun coût d'abonnement, aucun paiement requis, et aucune carte bancaire demandée. Vous avez accès à tout le contenu premium gratuitement, sans limitation."
+    },
+    {
+      question: "Comment accéder aux leaks OnlyFans ?",
+      answer: "Pour accéder aux leaks OnlyFans, il suffit de parcourir notre collection de stars et de cliquer sur celle qui vous intéresse. Chaque page de star contient tous ses leaks OnlyFans disponibles, organisés en galerie pour une navigation facile. Aucune inscription n'est requise."
+    },
+    {
+      question: "À quelle fréquence les leaks OnlyFans sont-ils mis à jour ?",
+      answer: "Les leaks OnlyFans sont mis à jour quotidiennement avec du nouveau contenu. Dès qu'un nouveau leak est disponible, il est immédiatement ajouté à notre collection. Nous nous efforçons de maintenir notre base de données à jour avec les derniers contenus exclusifs."
+    },
+    {
+      question: "Les leaks OnlyFans incluent-ils des photos et des vidéos ?",
+      answer: "Oui, notre collection de leaks OnlyFans comprend à la fois des photos et des vidéos en haute qualité. Le contenu inclut des images haute résolution et des vidéos complètes, offrant une expérience complète du contenu premium original."
+    },
+    {
+      question: "Puis-je rechercher des leaks OnlyFans par créateur ?",
+      answer: "Oui, vous pouvez rechercher des leaks OnlyFans par créateur en utilisant notre fonction de recherche ou en parcourant notre liste complète de stars. Chaque créateur a sa propre page dédiée avec tous ses leaks OnlyFans organisés chronologiquement."
+    },
+    {
+      question: "Les leaks OnlyFans sont-ils en haute qualité ?",
+      answer: "Oui, tous les leaks OnlyFans sont conservés en haute qualité originale. Les photos sont en haute résolution et les vidéos sont disponibles dans leur qualité maximale, offrant la meilleure expérience de visualisation possible."
+    },
+    {
+      question: "Y a-t-il une limite au nombre de leaks OnlyFans que je peux voir ?",
+      answer: "Non, il n'y a aucune limite. Vous pouvez voir autant de leaks OnlyFans que vous le souhaitez, autant de fois que vous voulez. L'accès est illimité et gratuit pour tous les utilisateurs, sans restriction de temps ou de quantité."
+    }
+  ],
 };
