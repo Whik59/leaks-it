@@ -159,7 +159,7 @@ export const VerificationModal: FC<VerificationModalProps> = ({ isOpen, onClose,
                 />
                 <span>{strings.telegramJoinButton}</span>
               </a>
-            </div>
+              </div>
           )}
 
           <div className="bg-gray-50 p-6 rounded-b-xl text-center">
@@ -181,10 +181,10 @@ export const VerificationModal: FC<VerificationModalProps> = ({ isOpen, onClose,
                   className="hidden"
                   aria-hidden="true"
                 />
-                <button onClick={handleUnlock} className="w-full font-bold py-4 px-4 rounded-lg transition-all duration-300 text-white text-lg bg-gradient-to-r from-pink-500 to-red-600 hover:from-pink-600 hover:to-red-700 shadow-lg hover:shadow-xl transform hover:scale-105 h-12 flex items-center justify-center">
-                  <LockOpenIcon className="h-6 w-6 mr-3" />
-                  <span>{hasAttemptedVerification ? strings.retryButton : strings.unlockButton}</span>
-                </button>
+              <button onClick={handleUnlock} className="w-full font-bold py-4 px-4 rounded-lg transition-all duration-300 text-white text-lg bg-gradient-to-r from-pink-500 to-red-600 hover:from-pink-600 hover:to-red-700 shadow-lg hover:shadow-xl transform hover:scale-105 h-12 flex items-center justify-center">
+                <LockOpenIcon className="h-6 w-6 mr-3" />
+                <span>{hasAttemptedVerification ? strings.retryButton : strings.unlockButton}</span>
+              </button>
               </>
             )}
             <button onClick={onClose} className="text-gray-500 hover:text-gray-700 text-sm mt-4">{strings.close}</button>

@@ -65,15 +65,15 @@ const AffiliateBanner: React.FC = () => {
         className="hidden"
         aria-hidden="true"
       />
-      <a 
+    <a 
         href={cloakedUrl}
-        target="_blank"
-        rel="noopener noreferrer"
+      target="_blank"
+      rel="noopener noreferrer"
         onClick={handleBannerClick}
-        style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
+      style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <div style={{
         background: 'linear-gradient(135deg, #ff4081 0%, #8e44ad 100%)',
         width: '100%',
