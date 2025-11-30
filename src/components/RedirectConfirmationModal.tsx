@@ -1,11 +1,12 @@
 'use client';
 
-import React, { FC, useMemo } from 'react';
+import React, { FC, useMemo, useState } from 'react';
 import { Dialog, DialogPanel } from '@headlessui/react';
 import { XMarkIcon, CheckBadgeIcon } from '@heroicons/react/24/solid';
 import { strings } from '../data/strings';
 import { getAffiliateSiteName, getAffiliateLogo } from '../utils/affiliateLinks';
 import Image from 'next/image';
+import { WarningModal } from './WarningModal';
 
 interface RedirectConfirmationModalProps {
   isOpen: boolean;
@@ -22,14 +23,34 @@ export const RedirectConfirmationModal: FC<RedirectConfirmationModalProps> = ({
 }) => {
   const siteName = getAffiliateSiteName(step);
   const logo = getAffiliateLogo(step);
+  const [showWarning, setShowWarning] = useState(false);
   
   // Random online users count for trust
   const onlineUsers = useMemo(() => {
     return Math.floor(Math.random() * 500) + 1200;
   }, []);
 
+  const handleClose = () => {
+    // When user tries to close, show warning instead
+    setShowWarning(true);
+  };
+
+  const handleWarningConfirm = () => {
+    // User wants to go back to the redirect modal
+    setShowWarning(false);
+    // The redirect modal will reopen automatically since isOpen is still true
+  };
+
+  const handleWarningCancel = () => {
+    // User wants to close anyway, so close everything
+    setShowWarning(false);
+    onClose();
+  };
+
   return (
-    <Dialog open={isOpen} onClose={onClose} className="relative z-50">
+    <>
+      {/* Only show redirect modal if not showing warning */}
+      <Dialog open={isOpen && !showWarning} onClose={handleClose} className="relative z-50">
       <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" />
       <div className="fixed inset-0 flex items-center justify-center p-4">
         <DialogPanel className="bg-white rounded-xl shadow-2xl max-w-sm w-full mx-auto transform transition-all duration-300">
@@ -45,7 +66,7 @@ export const RedirectConfirmationModal: FC<RedirectConfirmationModalProps> = ({
                 </p>
               </div>
               <button 
-                onClick={onClose} 
+                onClick={handleClose} 
                 className="text-white/80 hover:text-white transition-colors flex-shrink-0"
                 aria-label="Fermer"
               >
@@ -115,6 +136,13 @@ export const RedirectConfirmationModal: FC<RedirectConfirmationModalProps> = ({
         </DialogPanel>
       </div>
     </Dialog>
+
+    <WarningModal
+      isOpen={showWarning}
+      onClose={handleWarningCancel}
+      onConfirm={handleWarningConfirm}
+    />
+    </>
   );
 };
 

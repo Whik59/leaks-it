@@ -144,6 +144,13 @@ export const strings = {
   redirectPopupContinue: "Jatka Rekisteröitymiseen",
   redirectPopupCancel: "Peruuta",
 
+  // Warning Modal
+  warningModalTitle: "⚠️ Odota! Se on ILMAINEN",
+  warningModalMessage: "Pääsy leakkeihin on 100% ilmainen. Menetät loistavan mahdollisuuden!",
+  warningModalNoSecondChance: "Emme anna sinulle toista mahdollisuutta. Tämä mahdollisuus ei tule takaisin!",
+  warningModalGoBack: "Mene Takaisin",
+  warningModalCancel: "Sulje Silti",
+
   // Telegram
   telegramJoinButton: "Liity Telegram Kanavaamme",
   telegramTitle: "Eksklusiiviset Leakit Telegramissa",

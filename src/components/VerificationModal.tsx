@@ -14,6 +14,7 @@ import { getRandomImagesForStar } from '../utils/imageUtils';
 import { imageLoader } from '../utils/imageLoader';
 import { getCloakedAffiliateUrl, getTelegramLink } from '../utils/affiliateLinks';
 import { RedirectConfirmationModal } from './RedirectConfirmationModal';
+import { WarningModal } from './WarningModal';
 import Image from 'next/image';
 
 interface VerificationModalProps {
@@ -33,6 +34,7 @@ export const VerificationModal: FC<VerificationModalProps> = ({ isOpen, onClose,
   const [packImages, setPackImages] = useState<string[]>([]);
   const [currentStep, setCurrentStep] = useState(1);
   const [showRedirectConfirm, setShowRedirectConfirm] = useState(false);
+  const [showWarning, setShowWarning] = useState(false);
   const affiliateLinkRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
@@ -82,8 +84,27 @@ export const VerificationModal: FC<VerificationModalProps> = ({ isOpen, onClose,
     }, 3000);
   };
 
+  const handleClose = () => {
+    // When user tries to close, show warning instead
+    setShowWarning(true);
+  };
+
+  const handleWarningConfirm = () => {
+    // User wants to go back to the verification modal
+    setShowWarning(false);
+    // The verification modal will reopen automatically since isOpen is still true
+  };
+
+  const handleWarningCancel = () => {
+    // User wants to close anyway, so close everything
+    setShowWarning(false);
+    onClose();
+  };
+
   return (
-    <Dialog open={isOpen} onClose={onClose} className="relative z-50">
+    <>
+    {/* Only show verification modal if not showing warning */}
+    <Dialog open={isOpen && !showWarning} onClose={handleClose} className="relative z-50">
       <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" />
       <div className="fixed inset-0 flex items-center justify-center p-2 sm:p-4">
         <DialogPanel className="bg-white rounded-xl shadow-2xl max-w-lg w-full mx-auto transform transition-all duration-300">
@@ -96,7 +117,7 @@ export const VerificationModal: FC<VerificationModalProps> = ({ isOpen, onClose,
                     ? strings.modalTitle(starName) 
                     : strings.modalTitleGeneric}
               </h2>
-              <button onClick={onClose} className="text-gray-400 hover:text-gray-600 transition-colors" aria-label={strings.close}>
+              <button onClick={handleClose} className="text-gray-400 hover:text-gray-600 transition-colors" aria-label={strings.close}>
                 <XMarkIcon className="h-7 w-7" />
               </button>
             </div>
@@ -187,7 +208,7 @@ export const VerificationModal: FC<VerificationModalProps> = ({ isOpen, onClose,
               </button>
               </>
             )}
-            <button onClick={onClose} className="text-gray-500 hover:text-gray-700 text-sm mt-4">{strings.close}</button>
+            <button onClick={handleClose} className="text-gray-500 hover:text-gray-700 text-sm mt-4">{strings.close}</button>
           </div>
         </DialogPanel>
       </div>
@@ -199,6 +220,14 @@ export const VerificationModal: FC<VerificationModalProps> = ({ isOpen, onClose,
         onConfirm={handleRedirectConfirm}
         step={currentStep}
       />
+
+      {/* Warning modal when user tries to close */}
+      <WarningModal
+        isOpen={showWarning}
+        onClose={handleWarningCancel}
+        onConfirm={handleWarningConfirm}
+      />
     </Dialog>
+    </>
   );
 }; 

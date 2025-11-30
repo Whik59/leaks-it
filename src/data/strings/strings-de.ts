@@ -144,6 +144,13 @@ export const strings = {
   redirectPopupContinue: "Zur Registrierung fortfahren",
   redirectPopupCancel: "Abbrechen",
 
+  // Warning Modal
+  warningModalTitle: "⚠️ Warte! Es ist KOSTENLOS",
+  warningModalMessage: "Der Zugang zu den Leaks ist 100% kostenlos. Du verpasst eine großartige Gelegenheit!",
+  warningModalNoSecondChance: "Wir geben dir keine zweite Chance. Diese Gelegenheit wird nicht zurückkommen!",
+  warningModalGoBack: "Zurück gehen",
+  warningModalCancel: "Trotzdem schließen",
+
   // Telegram
   telegramJoinButton: "Unserem Telegram beitreten",
   telegramTitle: "Exklusive Leaks auf Telegram",

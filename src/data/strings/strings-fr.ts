@@ -143,10 +143,17 @@ export const strings = {
     redirectPopupVerifiedPartner: "✓ Partenaire vérifié",
     redirectPopupFreeRegistration: "✓ Inscription gratuite",
     redirectPopupSecureConnection: "✓ Connexion sécurisée",
-    redirectPopupContinue: "Continuer vers l'inscription",
-    redirectPopupCancel: "Annuler",
+  redirectPopupContinue: "Continuer vers l'inscription",
+  redirectPopupCancel: "Annuler",
+
+  // Warning Modal
+  warningModalTitle: "⚠️ Attendez ! C'est GRATUIT",
+  warningModalMessage: "L'accès aux leaks est 100% gratuit. Vous ratez une excellente opportunité !",
+  warningModalNoSecondChance: "Nous ne vous donnerons pas une seconde chance. Cette opportunité ne reviendra pas !",
+  warningModalGoBack: "Revenir en arrière",
+  warningModalCancel: "Fermer quand même",
   
-    // Telegram
+  // Telegram
     telegramJoinButton: "Rejoindre notre Telegram",
     telegramTitle: "Leaks exclusifs sur Telegram",
     telegramDescription: "Rejoignez notre canal Telegram pour recevoir les leaks exclusifs en avant-première !",

@@ -141,6 +141,7 @@ export class ContentGenerator {
 
   generateContent(star: StarContentData): GeneratedContent {
     // Select semantic keywords for better content
+    // Note: star.name is used as-is to preserve exact capitalization and special characters (accents, umlauts, etc.)
     const pageKeywords = this.selectSemanticKeywords(star.name, 12);
     const spunContent = this.generateAdvancedContent(star, pageKeywords);
     
@@ -220,6 +221,8 @@ export class ContentGenerator {
     const lang = langCode.startsWith('es') || langCode.startsWith('spanish') ? 'es' : 'en';
 
     const t = templates[lang];
+    // Preserve the exact name with capitalization and special characters (accents, umlauts, etc.)
+    // Example: "Anne Wünsche" stays "Anne Wünsche", not "anne wunsche" or "anne wünsche"
     const name = star.name;
 
     // Select semantic keyword groups
