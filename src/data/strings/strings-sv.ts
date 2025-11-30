@@ -137,6 +137,7 @@ export const strings = {
   redirectPopupDescription: (siteName: string) => `Du kommer att omdirigeras till ${siteName} för att slutföra din gratis registrering.`,
   redirectPopupBenefits: "✓ 100% Gratis Registrering\n✓ Omedelbar Åtkomst till Leaks\n✓ Inget Bankkort Krävs",
   redirectPopupOnlineUsers: (count: number) => `🔥 ${count.toLocaleString()} personer online nu`,
+  redirectPopupGenderStats: "71% kvinnor 29% män",
   redirectPopupTrust: "🔒 Säker och Verifierad Webbplats",
   redirectPopupVerifiedPartner: "✓ Verifierad Partner",
   redirectPopupFreeRegistration: "✓ Gratis Registrering",

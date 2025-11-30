@@ -4,7 +4,7 @@ import React, { FC, useMemo, useState } from 'react';
 import { Dialog, DialogPanel } from '@headlessui/react';
 import { XMarkIcon, CheckBadgeIcon } from '@heroicons/react/24/solid';
 import { strings } from '../data/strings';
-import { getAffiliateSiteName, getAffiliateLogo } from '../utils/affiliateLinks';
+import { getAffiliateSiteName } from '../utils/affiliateLinks';
 import Image from 'next/image';
 import { WarningModal } from './WarningModal';
 
@@ -22,7 +22,6 @@ export const RedirectConfirmationModal: FC<RedirectConfirmationModalProps> = ({
   step 
 }) => {
   const siteName = getAffiliateSiteName(step);
-  const logo = getAffiliateLogo(step);
   const [showWarning, setShowWarning] = useState(false);
   
   // Random online users count for trust
@@ -53,15 +52,15 @@ export const RedirectConfirmationModal: FC<RedirectConfirmationModalProps> = ({
       <Dialog open={isOpen && !showWarning} onClose={handleClose} className="relative z-50">
       <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" />
       <div className="fixed inset-0 flex items-center justify-center p-4">
-        <DialogPanel className="bg-white rounded-xl shadow-2xl max-w-sm w-full mx-auto transform transition-all duration-300">
+        <DialogPanel className="bg-white rounded-xl shadow-2xl max-w-lg w-full mx-auto transform transition-all duration-300 px-2 sm:px-0">
           {/* Header */}
-          <div className="bg-gradient-to-r from-pink-500 to-purple-600 rounded-t-xl p-4 text-white">
+          <div className="bg-gradient-to-r from-pink-500 to-purple-600 rounded-t-xl p-5 text-white">
             <div className="flex justify-between items-start mb-3">
               <div className="flex-1 pr-2">
-                <h3 className="text-lg font-bold mb-1">
+                <h3 className="text-xl font-bold mb-2">
                   {strings.redirectPopupTitle(siteName)}
                 </h3>
-                <p className="text-xs opacity-90">
+                <p className="text-sm opacity-90">
                   {strings.redirectPopupDescription(siteName)}
                 </p>
               </div>
@@ -74,18 +73,34 @@ export const RedirectConfirmationModal: FC<RedirectConfirmationModalProps> = ({
               </button>
             </div>
             
-            {/* Logo with Verified Badge - Smaller */}
+            {/* Step Images in Circle Frames */}
             <div className="flex flex-col items-center mt-3">
-              <div className="bg-white/20 backdrop-blur-sm rounded-lg p-2">
-                <Image
-                  src={logo}
-                  alt={siteName}
-                  width={100}
-                  height={25}
-                  className="opacity-95"
-                />
+              <div className="flex items-center justify-center gap-2 sm:gap-4">
+                {[2, 3, 4].map((stepNum) => (
+                  <div
+                    key={stepNum}
+                    className="relative w-20 h-20 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full border-[3px] border-white/30 bg-white/20 backdrop-blur-sm flex items-center justify-center shadow-lg"
+                  >
+                    <div className="absolute inset-0 rounded-full overflow-hidden">
+                      <Image
+                        src={`/step${stepNum}.png`}
+                        alt={`Step ${stepNum}`}
+                        width={160}
+                        height={160}
+                        className="opacity-95 object-cover w-full h-full"
+                      />
+                    </div>
+                    {/* Green Online Indicator - Modern & Compact */}
+                    <div className="absolute top-2 right-2.5 sm:top-2.5 sm:right-3 md:top-3 md:right-3.5 z-50">
+                      <div className="relative">
+                        <div className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 bg-green-500 rounded-full shadow-lg border-2 border-white"></div>
+                        <div className="absolute -inset-1 bg-green-500 rounded-full opacity-20 animate-ping"></div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <div className="mt-1.5 flex items-center gap-1.5 text-xs">
+              <div className="mt-2 flex items-center gap-1.5 text-xs">
                 <CheckBadgeIcon className="h-3.5 w-3.5 text-white" />
                 <span className="text-white/90">{strings.redirectPopupVerifiedPartner}</span>
               </div>
@@ -93,12 +108,24 @@ export const RedirectConfirmationModal: FC<RedirectConfirmationModalProps> = ({
           </div>
 
           {/* Content */}
-          <div className="p-4">
+          <div className="p-5">
             {/* Online users indicator */}
-            <div className="bg-gradient-to-r from-pink-50 to-purple-50 rounded-lg p-3 mb-3 text-center">
-              <p className="text-xs font-semibold text-gray-800">
+            <div className="bg-gradient-to-r from-pink-50 to-purple-50 rounded-lg p-3 mb-3">
+              <p className="text-xs font-semibold text-gray-800 text-center mb-2">
                 {strings.redirectPopupOnlineUsers(onlineUsers)}
               </p>
+              {/* Gender Statistics - Enhanced Design */}
+              <div className="flex items-center justify-center gap-3 mt-2 pt-2 border-t border-pink-200">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-pink-600 font-bold text-sm">👩</span>
+                  <span className="text-gray-700 font-semibold text-xs">71%</span>
+                </div>
+                <div className="w-px h-4 bg-gray-300"></div>
+                <div className="flex items-center gap-1.5">
+                  <span className="text-blue-600 font-bold text-sm">👨</span>
+                  <span className="text-gray-700 font-semibold text-xs">29%</span>
+                </div>
+              </div>
             </div>
 
             {/* Benefits */}

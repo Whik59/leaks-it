@@ -137,6 +137,7 @@ export const strings = {
   redirectPopupDescription: (siteName: string) => `Você será redirecionado para ${siteName} para completar seu cadastro gratuito.`,
   redirectPopupBenefits: "✓ Cadastro 100% Gratuito\n✓ Acesso Imediato aos Vazamentos\n✓ Nenhum Cartão Bancário Necessário",
   redirectPopupOnlineUsers: (count: number) => `🔥 ${count.toLocaleString()} pessoas online agora`,
+  redirectPopupGenderStats: "71% mulheres 29% homens",
   redirectPopupTrust: "🔒 Site Seguro e Verificado",
   redirectPopupVerifiedPartner: "✓ Parceiro Verificado",
   redirectPopupFreeRegistration: "✓ Cadastro Gratuito",

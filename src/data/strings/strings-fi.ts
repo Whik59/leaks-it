@@ -137,6 +137,7 @@ export const strings = {
   redirectPopupDescription: (siteName: string) => `Sinut ohjataan ${siteName} täydentääksesi ilmaisen rekisteröitymisesi.`,
   redirectPopupBenefits: "✓ 100% Ilmainen Rekisteröityminen\n✓ Välitön Pääsy Leakeihin\n✓ Pankkikorttia Ei Vaadita",
   redirectPopupOnlineUsers: (count: number) => `🔥 ${count.toLocaleString()} henkilöä online nyt`,
+  redirectPopupGenderStats: "71% naiset 29% miehet",
   redirectPopupTrust: "🔒 Turvallinen ja Vahvistettu Sivusto",
   redirectPopupVerifiedPartner: "✓ Vahvistettu Kumppani",
   redirectPopupFreeRegistration: "✓ Ilmainen Rekisteröityminen",

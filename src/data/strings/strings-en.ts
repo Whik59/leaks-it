@@ -137,6 +137,7 @@ export const strings = {
   redirectPopupDescription: (siteName: string) => `You will be redirected to ${siteName} to complete your free registration.`,
   redirectPopupBenefits: "✓ 100% Free Registration\n✓ Instant Access to Leaks\n✓ No Bank Card Required",
   redirectPopupOnlineUsers: (count: number) => `🔥 ${count.toLocaleString()} people online now`,
+  redirectPopupGenderStats: "71% women 29% men",
   redirectPopupTrust: "🔒 Secure and Verified Site",
   redirectPopupVerifiedPartner: "✓ Verified Partner",
   redirectPopupFreeRegistration: "✓ Free Registration",
