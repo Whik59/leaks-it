@@ -53,8 +53,8 @@ export const RedirectConfirmationModal: FC<RedirectConfirmationModalProps> = ({
               </button>
             </div>
             
-            {/* Logo */}
-            <div className="flex justify-center mt-4">
+            {/* Logo with Verified Badge */}
+            <div className="flex flex-col items-center mt-4">
               <div className="bg-white/20 backdrop-blur-sm rounded-lg p-3">
                 <Image
                   src={logo}
@@ -63,6 +63,10 @@ export const RedirectConfirmationModal: FC<RedirectConfirmationModalProps> = ({
                   height={35}
                   className="opacity-95"
                 />
+              </div>
+              <div className="mt-2 flex items-center gap-2 text-sm">
+                <CheckBadgeIcon className="h-4 w-4 text-white" />
+                <span className="text-white/90">{strings.redirectPopupVerifiedPartner}</span>
               </div>
             </div>
           </div>
@@ -88,38 +92,25 @@ export const RedirectConfirmationModal: FC<RedirectConfirmationModalProps> = ({
               </div>
             </div>
 
-            {/* Trust indicator */}
-            <div className="text-center mb-4">
-              <p className="text-xs text-gray-600">
-                {strings.redirectPopupTrust}
-              </p>
+            {/* Trust indicators */}
+            <div className="flex flex-wrap justify-center gap-3 mb-4">
+              <div className="flex items-center gap-1 text-xs text-gray-600">
+                <CheckBadgeIcon className="h-4 w-4 text-green-500" />
+                <span>{strings.redirectPopupFreeRegistration}</span>
+              </div>
+              <div className="flex items-center gap-1 text-xs text-gray-600">
+                <CheckBadgeIcon className="h-4 w-4 text-green-500" />
+                <span>{strings.redirectPopupSecureConnection}</span>
+              </div>
             </div>
 
-            {/* Telegram Button */}
-            <a
-              href={getTelegramLink()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mb-4 block w-full px-4 py-3 rounded-lg font-semibold text-white bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 text-center"
+            {/* Continue Button - Bigger, no cancel */}
+            <button
+              onClick={onConfirm}
+              className="w-full px-6 py-5 rounded-lg font-bold text-white text-lg bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
             >
-              📱 {strings.telegramJoinButton}
-            </a>
-
-            {/* Buttons */}
-            <div className="flex gap-3">
-              <button
-                onClick={onClose}
-                className="flex-1 px-4 py-3 rounded-lg font-semibold text-gray-700 bg-gray-100 hover:bg-gray-200 transition-colors duration-200"
-              >
-                {strings.redirectPopupCancel}
-              </button>
-              <button
-                onClick={onConfirm}
-                className="flex-1 px-4 py-3 rounded-lg font-semibold text-white bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
-              >
-                {strings.redirectPopupContinue}
-              </button>
-            </div>
+              {strings.redirectPopupContinue}
+            </button>
           </div>
         </DialogPanel>
       </div>

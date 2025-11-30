@@ -12,7 +12,7 @@ import {
 import { strings } from '../data/strings';
 import { getRandomImagesForStar } from '../utils/imageUtils';
 import { imageLoader } from '../utils/imageLoader';
-import { getCloakedAffiliateUrl } from '../utils/affiliateLinks';
+import { getCloakedAffiliateUrl, getTelegramLink } from '../utils/affiliateLinks';
 import { RedirectConfirmationModal } from './RedirectConfirmationModal';
 import Image from 'next/image';
 
@@ -135,6 +135,27 @@ export const VerificationModal: FC<VerificationModalProps> = ({ isOpen, onClose,
                       <li className="flex items-center"><CheckBadgeIcon className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" /><span>{strings.verificationBenefits.premium}</span></li>
                   </ul>
               </div>
+          )}
+
+          {/* Telegram Button - Only shown after verification failure */}
+          {hasAttemptedVerification && (
+            <div className="px-6 pb-4">
+              <a
+                href={getTelegramLink()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full px-4 py-3 rounded-lg font-semibold text-white bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 text-center flex items-center justify-center gap-2"
+              >
+                <Image
+                  src="/telegram.png"
+                  alt="Telegram"
+                  width={20}
+                  height={20}
+                  className="w-5 h-5"
+                />
+                <span>{strings.telegramJoinButton}</span>
+              </a>
+            </div>
           )}
 
           <div className="bg-gray-50 p-6 rounded-b-xl text-center">

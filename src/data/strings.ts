@@ -139,6 +139,9 @@ export const strings = {
   redirectPopupBenefits: "✓ Inscription 100% gratuite\n✓ Accès immédiat aux leaks\n✓ Aucune carte bancaire requise",
   redirectPopupOnlineUsers: (count: number) => `🔥 ${count.toLocaleString()} personnes en ligne maintenant`,
   redirectPopupTrust: "🔒 Site sécurisé et vérifié",
+  redirectPopupVerifiedPartner: "✓ Partenaire vérifié",
+  redirectPopupFreeRegistration: "✓ Inscription gratuite",
+  redirectPopupSecureConnection: "✓ Connexion sécurisée",
   redirectPopupContinue: "Continuer vers l'inscription",
   redirectPopupCancel: "Annuler",
 
