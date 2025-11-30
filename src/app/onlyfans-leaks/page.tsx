@@ -75,7 +75,7 @@ export default function OnlyFansLeaksPage() {
                   {star.name}
                 </h2>
                 <p className="text-gray-600 text-sm mb-2">
-                  OnlyFans Leaks
+                  {strings.onlyfansLeaksLabel}
                 </p>
                 <div className="mt-3 inline-flex items-center text-pink-600 text-sm font-medium">
                   {strings.viewContent}
@@ -127,13 +127,13 @@ export default function OnlyFansLeaksPage() {
         <footer className="bg-white rounded-lg shadow-lg p-8 border border-gray-200">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
-              <h3 className="font-semibold text-gray-900 mb-4 text-lg">À propos des leaks OnlyFans</h3>
+              <h3 className="font-semibold text-gray-900 mb-4 text-lg">{strings.onlyfansLeaksAboutTitle}</h3>
               <p className="text-gray-600 leading-relaxed">
-                Explorez tous les leaks OnlyFans de vos stars préférées. Notre collection complète regroupe tous les leaks disponibles, avec du contenu premium gratuit, des photos et vidéos exclusives, mises à jour quotidiennement.
+                {strings.onlyfansLeaksAboutDescription}
               </p>
             </div>
             <div>
-              <h3 className="font-semibold text-gray-900 mb-4 text-lg">Navigation</h3>
+              <h3 className="font-semibold text-gray-900 mb-4 text-lg">{strings.navigation}</h3>
               <ul className="space-y-3">
                 <li>
                   <Link href="/" className="text-pink-600 hover:text-pink-800 transition-colors duration-300 hover:underline">
@@ -142,7 +142,7 @@ export default function OnlyFansLeaksPage() {
                 </li>
                 <li>
                   <Link href="/telegram-leaks" className="text-pink-600 hover:text-pink-800 transition-colors duration-300 hover:underline">
-                    Telegram Leaks
+                    {strings.telegramLeaksLabel}
                   </Link>
                 </li>
               </ul>

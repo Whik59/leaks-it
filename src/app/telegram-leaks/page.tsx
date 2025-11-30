@@ -75,10 +75,10 @@ export default function TelegramLeaksPage() {
                   {star.name}
                 </h2>
                 <p className="text-gray-600 text-sm mb-2">
-                  Telegram Leaks
+                  {strings.telegramLeaksLabel}
                 </p>
                 <div className="mt-3 inline-flex items-center text-blue-600 text-sm font-medium">
-                  Voir les leaks Telegram →
+                  {strings.telegramLeaksViewLink}
                 </div>
               </Link>
             </article>
@@ -127,13 +127,13 @@ export default function TelegramLeaksPage() {
         <footer className="bg-white rounded-lg shadow-lg p-8 border border-gray-200">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
-              <h3 className="font-semibold text-gray-900 mb-4 text-lg">À propos des leaks Telegram</h3>
+              <h3 className="font-semibold text-gray-900 mb-4 text-lg">{strings.telegramLeaksAboutTitle}</h3>
               <p className="text-gray-600 leading-relaxed">
-                Découvrez tous les leaks Telegram exclusifs de vos stars préférées. Notre collection regroupe tous les leaks disponibles via Telegram, avec un accès gratuit et une mise à jour régulière du contenu.
+                {strings.telegramLeaksAboutDescription}
               </p>
             </div>
             <div>
-              <h3 className="font-semibold text-gray-900 mb-4 text-lg">Navigation</h3>
+              <h3 className="font-semibold text-gray-900 mb-4 text-lg">{strings.navigation}</h3>
               <ul className="space-y-3">
                 <li>
                   <Link href="/" className="text-pink-600 hover:text-pink-800 transition-colors duration-300 hover:underline">
@@ -142,7 +142,7 @@ export default function TelegramLeaksPage() {
                 </li>
                 <li>
                   <Link href="/onlyfans-leaks" className="text-pink-600 hover:text-pink-800 transition-colors duration-300 hover:underline">
-                    OnlyFans Leaks
+                    {strings.onlyfansLeaksLabel}
                   </Link>
                 </li>
               </ul>

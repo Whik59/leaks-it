@@ -110,20 +110,20 @@ export default function Home() {
             href="/telegram-leaks"
             className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
           >
-            <h2 className="text-2xl font-bold mb-2">📱 Telegram Leaks</h2>
-            <p className="text-blue-100">Découvrez tous les leaks exclusifs via Telegram</p>
+            <h2 className="text-2xl font-bold mb-2">{strings.telegramLeaksCardTitle}</h2>
+            <p className="text-blue-100">{strings.telegramLeaksCardDescription}</p>
             <div className="mt-4 text-sm font-medium">
-              Voir toutes les stars →
+              {strings.telegramLeaksCardLink}
             </div>
           </Link>
           <Link
             href="/onlyfans-leaks"
             className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
           >
-            <h2 className="text-2xl font-bold mb-2">🔥 OnlyFans Leaks</h2>
-            <p className="text-pink-100">Explorez tous les leaks OnlyFans disponibles</p>
+            <h2 className="text-2xl font-bold mb-2">{strings.onlyfansLeaksCardTitle}</h2>
+            <p className="text-pink-100">{strings.onlyfansLeaksCardDescription}</p>
             <div className="mt-4 text-sm font-medium">
-              Voir toutes les stars →
+              {strings.onlyfansLeaksCardLink}
             </div>
           </Link>
         </div>
@@ -200,7 +200,7 @@ export default function Home() {
                       href={`/${star.slug}`}
                       className="text-pink-600 hover:text-pink-800 transition-colors duration-300 hover:underline"
                     >
-                      OnlyFans Leaks {star.name}
+                      {strings.popularLeaksLink(star.name)}
                     </Link>
                   </li>
                 ))}
@@ -216,12 +216,12 @@ export default function Home() {
                 </li>
                 <li>
                   <Link href="/telegram-leaks" className="text-pink-600 hover:text-pink-800 transition-colors duration-300 hover:underline">
-                    Telegram Leaks
+                    {strings.telegramLeaksLabel}
                   </Link>
                 </li>
                 <li>
                   <Link href="/onlyfans-leaks" className="text-pink-600 hover:text-pink-800 transition-colors duration-300 hover:underline">
-                    OnlyFans Leaks
+                    {strings.onlyfansLeaksLabel}
                   </Link>
                 </li>
                 {trendingStarsRotation.map((star) => (
