@@ -174,7 +174,7 @@ export const strings = {
   telegramLeaksAboutTitle: "O Przeciekach Telegram",
   telegramLeaksAboutDescription: "Odkryj wszystkie ekskluzywne przecieki Telegram od swoich ulubionych gwiazd. Nasza kolekcja grupuje wszystkie przecieki dostępne przez Telegram, z darmowym dostępem i regularnymi aktualizacjami treści.",
   onlyfansLeaksAboutTitle: "O Przeciekach OnlyFans",
-  onlyfansLeaksAboutDescription: "Przeglądaj wszystkie przecieki OnlyFans od swoich ulubionych gwiazd. Nasza kompletna kolekcja grupuje wszystkie dostępne przecieki, z darmową treścią premium, ekskluzywnymi zdjęciami i filmami, aktualizowanymi codziennie.`,
+  onlyfansLeaksAboutDescription: "Przeglądaj wszystkie przecieki OnlyFans od swoich ulubionych gwiazd. Nasza kompletna kolekcja grupuje wszystkie dostępne przecieki, z darmową treścią premium, ekskluzywnymi zdjęciami i filmami, aktualizowanymi codziennie.",
 
   // Telegram Leaks FAQ
   telegramLeaksFaqTitle: "Często Zadawane Pytania o Przecieki Telegram",
