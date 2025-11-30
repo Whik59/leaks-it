@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://onlyfanleaks.fr/sitemap-index.xml
+Sitemap: https://onlyfanleaks.fr/sitemap.xml
+
+# Block unnecessary crawling
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /*.json$
+
+# Crawl delay to be respectful
+Crawl-delay: 1

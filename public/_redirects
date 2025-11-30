@@ -1,0 +1,4 @@
+# Cloudflare Pages redirects and rewrites
+# Note: Next.js static export handles routing automatically
+# The API redirect is handled by Cloudflare Pages Function in functions/api/redirect.ts
+
